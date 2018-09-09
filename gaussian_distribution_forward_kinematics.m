@@ -22,52 +22,80 @@ clear all
 % pitch = latex(atan2(-T(3,1), sqrt(T(3,2)^2 + T(3,3)^2)))
 % yaw = latex(atan2(T(3,2),T(3,3)))
 
-% syms var1 var2 var3
-% stddev1 = sqrt(var1);
-% stddev2 = sqrt(var2);
-% stddev3 = sqrt(var3);
-% var = [var1; var2; var3];
-% stddev = [stddev1; stddev2; stddev3];
-% mu = [t1; t2; t3];
-
-
-
-
-
-%// Plot curve
-% x = (-5 * t0_var:0.01:5 * t0_var) + t0_mu;  %// Plotting range
-% y = exp(- 0.5 * ((x - t0_mu) / t0_var) .^ 2) / (t0_var * sqrt(2 * pi));
-% plot(x, y)
 Ls = [5,5,5];
+theta_mus = [90, 45, 15];
+theta_vars = [3,3,3];
 
-t1_mu = 90;
-t1_var = 1;
+t1_mu = deg2rad(theta_mus(1,1));
+t1_var = deg2rad(theta_vars(1,1));
 
-t2_mu = 45;
-t2_var = 1;
+t2_mu = deg2rad(theta_mus(1,2));
+t2_var = deg2rad(theta_vars(1,2));
 
-t3_mu = 15;
-t3_var = 1;
+t3_mu = deg2rad(theta_mus(1,3));
+t3_var = deg2rad(theta_vars(1,3));
 
-n=200;
+n=1000;
 t1_s = normrnd(t1_mu,t1_var,[n,1]);
 t2_s = normrnd(t2_mu,t2_var,[n,1]);
 t3_s = normrnd(t3_mu,t3_var,[n,1]);
 
 thetas = [t1_s,t2_s,t3_s];
-qs = qef_from_thetas(thetas,Ls)
+qs = qef_from_thetas(thetas,Ls);
+q_exact = qef_from_thetas(deg2rad(theta_mus),Ls);
 xs = qs(:,1);
 ys = qs(:,2);
-zs = qs(:,1);
-rolls = qs(:,2);
-pitches = qs(:,1);
-yaws = qs(:,2);
+zs = qs(:,3);
+rolls = qs(:,4);
+pitches = qs(:,5);
+yaws = qs(:,6);
 
-data = rolls;
-xpd = fitdist(data,'Normal');
-x_values = 1.25*min(data):.1:1.25*max(data);
-x_pdf = pdf(xpd,x_values);
-plot(x_values,x_pdf)
+
+figure
+gran = .005;
+
+xpd = fitdist(xs,'Normal');
+xrange = min(xs)-1:gran:max(xs)+1;
+x_pdf = pdf(xpd,xrange);
+
+ypd = fitdist(ys,'Normal');
+yrange = min(ys)-1:gran:max(ys)+1;
+y_pdf = pdf(ypd,yrange);
+
+zpd = fitdist(zs,'Normal');
+zrange = min(zs)-1:gran:max(zs)+1;
+z_pdf = pdf(zpd,zrange);
+
+% plot(range,x_pdf,'LineWidth',2)
+% plot(range,y_pdf,'Color','r','LineStyle',':','LineWidth',2)
+% plot(range,z_pdf,'Color','g','LineStyle','-','LineWidth',2)
+
+subplot(3,1,1)
+plot(xrange,x_pdf,'LineWidth',2)
+%legend('X distribution.','Location','NorthEast');
+legend('X distribution.','Location','NorthEast');
+legend(strcat('\mu_x: ',sprintf('%.3f',xpd.mu),', \sigma_x:',sprintf('%f', xpd.sigma)))
+text(min(xrange)-.1,max(x_pdf)-2,strcat('\mu_x: ',sprintf('%.3f',xpd.mu),', \sigma_x:',sprintf('%f', xpd.sigma)),'Fontsize',12)
+text(min(xrange)-.1,max(x_pdf)-(max(x_pdf)/5),strcat('x_{exact}: ',sprintf('%.3f',q_exact(1,1))),'Fontsize',12)
+
+subplot(3,1,2)
+plot(yrange,y_pdf,'LineWidth',2)
+legend('Y distribution','Location','NorthEast')
+text(min(yrange)-.1,max(y_pdf),strcat('\mu_y: ',sprintf('%.3f',ypd.mu),', \sigma_y:',sprintf('%f', ypd.sigma)),'Fontsize',12)
+text(min(yrange)-.1,max(y_pdf)-(max(y_pdf)/5),strcat('y_{exact}: ',sprintf('%.3f',q_exact(1,2))),'Fontsize',12)
+
+subplot(3,1,3)
+plot(zrange,z_pdf,'LineWidth',2)
+legend('Z distribution','Location','NorthEast')
+text(min(zrange)-.1,max(z_pdf),strcat('\mu_z: ',sprintf('%.3f',zpd.mu),', \sigma_z:',sprintf('%f', zpd.sigma)),'Fontsize',12)
+text(min(zrange)-.1,max(z_pdf)-(max(z_pdf)/5),strcat('z_{exact}: ',sprintf('%.3f',q_exact(1,3))),'Fontsize',12)
+
+
+
+
+
+
+
 
 function qs = qef_from_thetas(thetas, Ls)
     % input: 
