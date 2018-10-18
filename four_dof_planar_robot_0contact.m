@@ -4,7 +4,7 @@ close all
 clear all
 
 
-           
+%tranformation_matrices  
 uirunner
 function uirunner
     
@@ -399,78 +399,74 @@ function tranformation_matrices
 
 syms yaw_b x_b y_b t_r1 t_r2 t_l1 t_l2 Lb L1 L2
 
+    Rs_b = [cos(yaw_b), - sin(yaw_b), x_b;
+            sin(yaw_b), cos(yaw_b), y_b;
+            0 0 1];
+        
+    Rb_r1 = [1 0 Lb / 2;
+            0 1 0
+            0 0 1];
+        
+    Rr1_r1rot = [cos(t_r1 - pi), sin(t_r1 - pi) 0;
+                 - sin(t_r1 - pi), cos(t_r1 - pi) 0;
+                0 0 1];
+            
+    Rr1rot_r2 = [1 0 L1;
+                0 1 0;
+                0 0 1];
+            
+    Rr2_r2rot = [ cos(pi + t_r2) sin(pi + t_r2) 0;
+                 - sin(pi + t_r2) cos(pi + t_r2) 0;
+                0 0 1 ];
+            
+    Rr2rot_r_end_eff = [ 1 0 L2;
+                         0 1 0;
+                         0 0 1 ];
+
+    Rb_l1 = [ 1 0, - Lb / 2;
+              0 1 0
+              0 0 1 ];
+          
+    Rl1_l1rot = [ cos(2 * pi - t_l1) sin(2 * pi - t_l1) 0;
+                - sin(2 * pi - t_l1) cos(2 * pi - t_l1) 0;
+                  0 0 1 ];
+              
+    Rl1rot_l2 = [1 0 L1;
+                0 1 0
+                0 0 1 ];
+            
+    Rl2_l2rot = [cos(- pi - t_l2) sin(- pi - t_l2) 0;
+               - sin(- pi - t_l2) cos(- pi - t_l2) 0
+                 0 0 1 ];
+             
+    Rrotl2_endeff = [1 0 L2;
+                    0 1 0
+                    0 0 1
+    ]; 
+
+
+P2l = Rs_b * Rb_l1 * Rl1_l1rot * Rl1rot_l2;
+P2l = simplify(P2l);      
+latex(P2l);  
+
+Pl_endeff = Rs_b * Rb_l1 * Rl1_l1rot * Rl1rot_l2 * Rl2_l2rot * Rrotl2_endeff * [0;0;1];
+Pl_endeff = simplify(Pl_endeff);
+yaw = simplify(atan2(Pl_endeff(2,1),Pl_endeff(1,1)));
+latex(Pl_endeff)
+latex(yaw);
+
+Rr = Rs_b * Rb_r1 * Rr1_r1rot * Rr1rot_r2 * Rr2_r2rot * Rr2rot_r_end_eff ;
+Rr = simplify(Rr);
+latex(Rr);                            % \left(\begin{array}{ccc} \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & x_{b} + L_2\, \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) + \frac{L_b\, \cos\!\left(\Psi_b\right)}{2} - L_1\, \cos\!\left(\theta_{r,1} - \Psi_b\right)\\ - \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & y_{b} - L_2\, \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) + \frac{L_b\, \sin\!\left(\Psi_b\right)}{2} + L_1\, \sin\!\left(\theta_{r,1} - \Psi_b\right)\\ 0 & 0 & 1 \end{array}\right)
+
+P2r = Rs_b * Rb_r1 * Rr1_r1rot * Rr1rot_r2;
+P2r = simplify(P2r);      
+latex(P2r);                             % latex: \left(\begin{array}{ccc} - \cos\!\left(\theta_{r,1} - \psi_b\right) & - \sin\!\left(\theta_{r,1} - \psi_b\right) & x_{b} + \frac{\mathrm{L_b}\, \cos\!\left(\psi_b\right)}{2} - \mathrm{L1}\, \cos\!\left(\theta_{r,1} - \psi_b\right)\\ \sin\!\left(\theta_{r,1} - \psi_b\right) & - \cos\!\left(\theta_{r,1} - \psi_b\right) & y_{b} + \frac{\mathrm{L_b}\, \sin\!\left(\psi_b\right)}{2} + \mathrm{L1}\, \sin\!\left(\theta_{r,1} - \psi_b\right)\\ 0 & 0 & 1 \end{array}\right)
+
+P1r = Rs_b * Rb_r1;
+P1r = simplify(P1r);
+latex(P1r);                               % latex: \left(\begin{array}{ccc} \cos\!\left(\mathrm{yaw}_{b}\right) & - \sin\!\left(\mathrm{yaw}_{b}\right) & x_{b} + \frac{\mathrm{Lb}\, \cos\!\left(\mathrm{yaw}_{b}\right)}{2}\\ \sin\!\left(\mathrm{yaw}_{b}\right) & \cos\!\left(\mathrm{yaw}_{b}\right) & y_{b} + \frac{\mathrm{Lb}\, \sin\!\left(\mathrm{yaw}_{b}\right)}{2}\\ 0 & 0 & 1 \end{array}\right)
     
-
-% 
-% 
-%     Rs_b = [cos(yaw_b) - sin(yaw_b) x_b;
-%             sin(yaw_b) cos(yaw_b) y_b;
-%             0 0 1];
-%         
-%     Rb_r1 = [1 0 Lb / 2;
-%             0 1 0
-%             0 0 1];
-%         
-%     Rr1_r1rot = [cos(t_r1 - pi) sin(t_r1 - pi) 0;
-%                  - sin(t_r1 - pi) cos(t_r1 - pi) 0;
-%                 0 0 1];
-%             
-%     Rr1rot_r2 = [1 0 L1;
-%                 0 1 0;
-%                 0 0 1];
-%             
-%     Rr2_r2rot = [ cos(pi + t_r2) sin(pi + t_r2) 0;
-%                  - sin(pi + t_r2) cos(pi + t_r2) 0;
-%                 0 0 1 ];
-%             
-%     Rr2rot_r_end_eff = [ 1 0 L2;
-%                          0 1 0;
-%                          0 0 1 ];
-% 
-%     Rb_l1 = [ 1 0 - Lb / 2;
-%               0 1 0
-%               0 0 1 ];
-%           
-%     Rl1_l1rot = [ cos(2 * pi - t_l1) sin(2 * pi - t_l1) 0;
-%                 - sin(2 * pi - t_l1) cos(2 * pi - t_l1) 0;
-%                   0 0 1 ];
-%               
-%     Rl1rot_l2 = [1 0 L1;
-%                 0 1 0
-%                 0 0 1 ];
-%             
-%     Rl2_l2rot = [cos(- pi - t_l2) sin(- pi - t_l2) 0;
-%                - sin(- pi - t_l2) cos(- pi - t_l2) 0
-%                  0 0 1 ];
-%              
-%     Rrotl2_endeff = [1 0 L2;
-%                     0 1 0
-%                     0 0 1
-%     ]; 
-
-
-% P2l = Rs_b * Rb_l1 * Rl1_l1rot * Rl1rot_l2;
-% P2l = simplify(P2l);      
-% latex(P2l);  
-% 
-% Pl_endeff = Rs_b * Rb_l1 * Rl1_l1rot * Rl1rot_l2 * Rl2_l2rot * Rrotl2_endeff ;
-% Pl_endeff = simplify(Pl_endeff);
-% yaw = simplify(atan2(Pl_endeff(2,1),Pl_endeff(1,1)));
-% latex(Pl_endeff);
-% latex(yaw)
-
-% Rr = Rs_b * Rb_r1 * Rr1_r1rot * Rr1rot_r2 * Rr2_r2rot * Rr2rot_r_end_eff ;
-% Rr = simplify(Rr);
-% latex(Rr)                            % \left(\begin{array}{ccc} \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & x_{b} + L_2\, \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) + \frac{L_b\, \cos\!\left(\Psi_b\right)}{2} - L_1\, \cos\!\left(\theta_{r,1} - \Psi_b\right)\\ - \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & \cos\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) & y_{b} - L_2\, \sin\!\left(\theta_{r,1} + \theta_{r,2} - \Psi_b\right) + \frac{L_b\, \sin\!\left(\Psi_b\right)}{2} + L_1\, \sin\!\left(\theta_{r,1} - \Psi_b\right)\\ 0 & 0 & 1 \end{array}\right)
-% 
-% P2r = Rs_b * Rb_r1 * Rr1_r1rot * Rr1rot_r2;
-% P2r = simplify(P2r);      
-% latex(P2r)                             % latex: \left(\begin{array}{ccc} - \cos\!\left(\theta_{r,1} - \psi_b\right) & - \sin\!\left(\theta_{r,1} - \psi_b\right) & x_{b} + \frac{\mathrm{L_b}\, \cos\!\left(\psi_b\right)}{2} - \mathrm{L1}\, \cos\!\left(\theta_{r,1} - \psi_b\right)\\ \sin\!\left(\theta_{r,1} - \psi_b\right) & - \cos\!\left(\theta_{r,1} - \psi_b\right) & y_{b} + \frac{\mathrm{L_b}\, \sin\!\left(\psi_b\right)}{2} + \mathrm{L1}\, \sin\!\left(\theta_{r,1} - \psi_b\right)\\ 0 & 0 & 1 \end{array}\right)
-% 
-% P1r = Rs_b * Rb_r1;
-% P1r = simplify(P1r);
-% latex(P1r)                               % latex: \left(\begin{array}{ccc} \cos\!\left(\mathrm{yaw}_{b}\right) & - \sin\!\left(\mathrm{yaw}_{b}\right) & x_{b} + \frac{\mathrm{Lb}\, \cos\!\left(\mathrm{yaw}_{b}\right)}{2}\\ \sin\!\left(\mathrm{yaw}_{b}\right) & \cos\!\left(\mathrm{yaw}_{b}\right) & y_{b} + \frac{\mathrm{Lb}\, \sin\!\left(\mathrm{yaw}_{b}\right)}{2}\\ 0 & 0 & 1 \end{array}\right)
-%     
 
 
 
