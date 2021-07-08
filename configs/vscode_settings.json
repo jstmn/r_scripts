@@ -1,0 +1,46 @@
+{
+    "workbench.tree.indent": 21,
+    "workbench.colorTheme": "Monokai",
+    "search.exclude": {
+        "bazel-bin/**": true,
+        "bazel-genfiles/**": true,
+        "bazel-out/**": true,
+        "bazel-testlogs/**": true,
+        "bazel-thirdwave/**": true,
+        "bazel-thirdwave/external/**": false
+    },
+    "files.watcherExclude": {
+        "bazel-bin/**": true,
+        "bazel-genfiles/**": true,
+        "bazel-out/**": true,
+        "bazel-testlogs/**": true,
+        "bazel-thirdwave/**": true,
+        "bazel-thirdwave/external/**": false
+    },
+    "editor.fontSize": 13,
+    "explorer.confirmDragAndDrop": false,
+    "C_Cpp.updateChannel": "Insiders",
+
+    "workbench.colorCustomizations": {
+        // "editor.selectionBackground": "#ff8c8c", // red color hexadecimal code
+        "editor.selectionHighlightBorder": "#fa0303",
+        "editor.findMatchBackground": "#ffffffa8", //Current SEARCH MATCH
+        "editor.findMatchHighlightBackground": "#ff0000a1" //Other SEARCH MATCHES
+    },
+    "[python]": {
+        "editor.rulers": [120]
+    },
+    "editor.renderWhitespace": "trailing",
+    "python.languageServer": "Pylance",
+    "editor.fastScrollSensitivity": 4,
+    "workbench.startupEditor": "newUntitledFile",
+    "liveshare.authenticationProvider": "GitHub",
+    "workbench.editorAssociations": {
+        "*": "default",
+        "*.ipynb": "jupyter.notebook.ipynb",
+        "*.png": "imagePreview.previewEditor",
+        "*.jpg": "imagePreview.previewEditor"
+    },
+    "jupyter.alwaysTrustNotebooks": true,
+    "window.zoomLevel": 1
+}
