@@ -1,4 +1,16 @@
-PS1='\[\e]0;\u@\h: \w\a\]\n\e[0;36m\w\e[0m\n\e[0;31m $ \e[0m'
+
+
+if [ ${#HOSTNAME} -gt 20 ]
+  
+  # On host machine
+  then
+    PS1="[$FBLE \w $RS] \\$ "
+
+  # In docker image
+  else
+    PS1="[ $HOSTNAME: $FBLE\w $RS] \\$ "    
+fi
+
 
 
 alias pbcopy='xclip -selection clipboard'
@@ -9,15 +21,6 @@ alias gb='git branch'
 alias gs='git status'
 alias vpn_down='sudo wg-quick down wg0'
 alias vpn_up='sudo wg-quick up wg0'
-alias mount_columbia='sudo mount -t nfs columbia:/volume1/all /nfs/columbia/'
 alias cl='clear'
 
-echo "Aliases: "
-echo "  br:    bazel run --jobs=3"
-echo "  lint:  ./tools/linter.sh --no-commit"
-echo "  gb:    git branch"
-echo "  gs:    git status"
-echo "  ssh76:    ..."
-echo "  vpn_down: ..."
-echo "  mount_columbia: ..."
-echo "  cl:     clear"
+echo "Aliases: vpn_up, vpn_down, vpn_status, lint, gb, gs, cl, td"
