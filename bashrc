@@ -32,15 +32,9 @@ if [ ${#HOSTNAME} -gt 20 ]
     PS1="[ $HOSTNAME: $FBLE\w $RS] \\$ "    
 fi
 
-
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-alias lint='./tools/linter.sh --no-commit'
 alias gb='git branch'
 alias gs='git status'
-alias vpn_down='sudo wg-quick down wg0'
-alias vpn_up='sudo wg-quick up wg0'
 alias cl='clear'
-
-echo "Aliases: vpn_up, vpn_down, vpn_status, lint, gb, gs, cl, td"
