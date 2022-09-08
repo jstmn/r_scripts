@@ -1,22 +1,6 @@
 {
     "workbench.tree.indent": 21,
     "workbench.colorTheme": "Monokai",
-    "search.exclude": {
-        "bazel-bin/**": true,
-        "bazel-genfiles/**": true,
-        "bazel-out/**": true,
-        "bazel-testlogs/**": true,
-        "bazel-thirdwave/**": true,
-        "bazel-thirdwave/external/**": false
-    },
-    "files.watcherExclude": {
-        "bazel-bin/**": true,
-        "bazel-genfiles/**": true,
-        "bazel-out/**": true,
-        "bazel-testlogs/**": true,
-        "bazel-thirdwave/**": true,
-        "bazel-thirdwave/external/**": false
-    },
     "editor.fontSize": 13,
     "explorer.confirmDragAndDrop": false,
     "C_Cpp.updateChannel": "Insiders",
