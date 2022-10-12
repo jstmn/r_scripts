@@ -41,5 +41,4 @@ alias cl='clear'
 
 alias nnik_quickstart='cd ~/Projects/nn_ik; source venv/bin/activate'
 alias ikflow_quickstart='cd ~/Projects/ikflow; source venv/bin/activate'
-alias nnik_quickstart='cd ~/Projects/nn_ik; source venv/bin/activate'
 alias jkinpylib_quickstart='cd ~/Projects/Jkinpylib; source venv/bin/activate'
