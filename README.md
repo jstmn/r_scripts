@@ -1,1 +1,1 @@
-## Assorted Scripts / Configs
+# Assorted Scripts and Configs
