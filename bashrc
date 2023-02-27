@@ -1,4 +1,3 @@
-
 # ANSI color codes
 RS="\[\033[0m\]"    # reset
 HC="\[\033[1m\]"    # hicolor
@@ -22,23 +21,37 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 if [ ${#HOSTNAME} -gt 20 ]
-  
+
   # On host machine
   then
-    PS1="[$FBLE \w $RS] \\$ "
+    PS1="[$FRED \w $RS] \\$ "
 
   # In docker image
   else
-    PS1="[ $HOSTNAME: $FBLE\w $RS] \\$ "    
+    PS1="[ $HOSTNAME: $FBLE\w $RS] \\$ "
 fi
 
+
+# assorted
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias cl='clear'
+alias sourcebashrc='source ~/.bashrc'
+alias sourcevenv='source venv/bin/activate'
+alias urdfviz='/home/jstm/Libraries/urdf-viz'
+alias mkvenv='python3.8 -m venv'
 
+# git short cuts
 alias gb='git branch'
 alias gs='git status'
-alias cl='clear'
+alias pushreadmechange='git add README.md && git commit -m "updated readme" && git push origin HEAD'
 
-alias nnik_quickstart='cd ~/Projects/nn_ik; source venv/bin/activate'
+
+# Quick starts
 alias ikflow_quickstart='cd ~/Projects/ikflow; source venv/bin/activate'
-alias jkinpylib_quickstart='cd ~/Projects/Jkinpylib; source venv/bin/activate'
+alias jkinpylib_quickstart='cd ~/Projects/jkinpylib; source venv/bin/activate'
+alias cppflow_quickstart='cd ~/Projects/cppflow; source venv/bin/activate'
+
+
+# ssh shortcuts
+alias sshbrain='ssh jeremysmorgan@X'

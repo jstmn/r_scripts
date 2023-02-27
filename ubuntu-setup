@@ -1,14 +1,23 @@
 sudo apt update && sudo apt -y upgrade
 
-sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot
+sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg
+
 git config --global user.email "jsmorgan6@gmail.com"
 
+# if on ubuntu22
 sudo add-apt-repository -y ppa:gnome-terminator
 sudo apt-get update
 sudo apt-get install -y terminator
 
+# ow. if on ubuntu20
+sudo apt install -y terminator
+
+# go to terminator -> Prefereces -> Profiles -> Scrolling, check 'Infinite Scrollback'
+
 # snap installs need to be entered one by one for some reason
 sudo snap install chromium
+sudo snap install slack
+sudo snap install okular
 sudo snap install code --classic
 sudo snap install sublime-text --classic
 sudo snap install gnome-terminator --beta
@@ -18,7 +27,6 @@ sudo snap install gnome-terminator --beta
 # https://www.google.com/chrome/
 
 # setup github key
-
 ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
 ssh-add ~/.ssh/id_ed25519
 # go to https://github.com/settings/ssh/new and add key
@@ -28,6 +36,7 @@ mkdir ~/Libraries
 mkdir ~/Projects && cd ~/Projects
 git clone git@github.com:jstmn/ikflow.git
 git clone git@github.com:jstmn/r_scripts.git
+git clone git@github.com:jstmn/cppflow.git
 
 
 wget https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg -O ~/Pictures/black.jpg
