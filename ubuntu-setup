@@ -1,6 +1,6 @@
 sudo apt update && sudo apt -y upgrade
 
-sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg
+sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools
 
 git config --global user.email "jsmorgan6@gmail.com"
 
@@ -21,7 +21,9 @@ sudo snap install okular
 sudo snap install code --classic
 sudo snap install sublime-text --classic
 sudo snap install gnome-terminator --beta
-
+sudo snap install standard-notes
+sudo snap connect standard-notes:password-manager-service
+ 
 
 # download chrome:
 # https://www.google.com/chrome/
@@ -31,6 +33,8 @@ ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
 ssh-add ~/.ssh/id_ed25519
 # go to https://github.com/settings/ssh/new and add key
 
+# download zotero
+https://www.zotero.org/support/installation
 
 mkdir ~/Libraries
 mkdir ~/Projects && cd ~/Projects
