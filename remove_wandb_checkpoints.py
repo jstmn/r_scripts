@@ -4,8 +4,8 @@ import argparse
 
 # Delete non final artifacts
 TYPE = "model"
-TO_KEEP_ALIASES = ["best_k", "latest"]
-
+TO_KEEP_ALIASES = []
+# TO_KEEP_ALIASES = ["best_k", "latest"]
 
 if __name__ == "__main__":
 
@@ -18,9 +18,10 @@ if __name__ == "__main__":
     collections = [coll for coll in api.artifact_type(type_name=TYPE, project=project).collections()]
 
     # aliases = set()
+    total_deleted_size_gb = 0
     for coll in collections:
 
-        print(f"collection: {coll}")
+        print(coll)
         
         for artifact in coll.versions():
 
@@ -30,7 +31,8 @@ if __name__ == "__main__":
                 print(" - KEEPING")
             else:
                 artifact.delete()
+                total_deleted_size_gb += artifact.size * 9.313225746154785e-10
                 print(" - DELETED")
 
-    print(f"\ncollections")
-    print(collections)
+
+    print(f"\nTotal amount of space data freed: {round(total_deleted_size_gb, 2)}gb")
