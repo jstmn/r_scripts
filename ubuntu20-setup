@@ -20,7 +20,11 @@ sudo snap connect standard-notes:password-manager-service
  
 
 # download chrome:
-# https://www.google.com/chrome/
+https://www.google.com/chrome/  
+https://chromewebstore.google.com/detail/web-search-navigator/cohamjploocgoejdfanacfgkhjkhdkek  # web-search-navigator
+https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi           # fast scroll
+https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom   # ad block
+
 
 # setup github key
 ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
