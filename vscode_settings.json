@@ -2,7 +2,6 @@
     "workbench.tree.indent": 21,
     "editor.fontSize": 13,
     "explorer.confirmDragAndDrop": false,
-    "C_Cpp.updateChannel": "Insiders",
 
     "workbench.colorCustomizations": {
         // "editor.selectionBackground": "#ff8c8c", // red color hexadecimal code
@@ -20,13 +19,28 @@
     "liveshare.authenticationProvider": "GitHub",
     "workbench.editorAssociations": {
         "*": "default",
-        "*.ipynb": "jupyter.notebook.ipynb",
+        "*.ipynb": "jupyter-notebook",
         "*.png": "imagePreview.previewEditor",
         "*.jpg": "imagePreview.previewEditor"
     },
     "jupyter.alwaysTrustNotebooks": true,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 0.5,
 
     "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 2, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4, NamespaceIndentation: All, FixNamespaceComments: false }",
     "C_Cpp.clang_format_fallbackStyle": "",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "cpp": true
+    },
+    "includePath": [
+        "/opt/ros/humble/include/**",
+        "/usr/include/**",
+        "${workspaceFolder}/**"
+    ],
+    "explorer.confirmDelete": false,
 }
