@@ -34,3 +34,9 @@ Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive
 # Create a ps1
 https://bash-prompt-generator.org/
 echo "PS1='[ \u ]'" >> ~/.bashrc   # replace "PS1=''" with copied value from website
+
+# update .bashrc
+echo "alias pbcopy='xclip -selection clipboard'" >> ~/.bashrc
+echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
+echo "alias gb='git branch'" >> ~/.bashrc
+echo "alias gs='git status'" >> ~/.bashrc
