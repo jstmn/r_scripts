@@ -1,0 +1,8 @@
+sudo apt install gnome-shell-extension-manager gnome-tweaks
+
+sudo snap install tmux --classic
+
+# add chrome extensions
+https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom
+https://chromewebstore.google.com/detail/web-search-navigator/cohamjploocgoejdfanacfgkhjkhdkek
+https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi
