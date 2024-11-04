@@ -28,6 +28,8 @@ wget https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg
 # System settings
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as Ctrl
 Settings -> Power -> Screen Blank -> 15 minutes
+Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive 
+
 
 # Create a ps1
 https://bash-prompt-generator.org/
