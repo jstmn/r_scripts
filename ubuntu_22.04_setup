@@ -36,3 +36,7 @@ file://~/Pictures/black.jpg # this isn't working
 # keymaps
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position
 -> Caps Lock as Ctrl
+
+# Create a ps1
+https://bash-prompt-generator.org/
+echo "PS1='[ \u ]'" >> ~/.bashrc   # replace "PS1=''" with copied value from website
