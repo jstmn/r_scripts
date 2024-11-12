@@ -1,12 +1,8 @@
 sudo apt update && sudo apt -y upgrade
-
 sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev
 
 python3.8 -m pip install --upgrade pip
-
 git config --global user.email "jsmorgan6@gmail.com"
-
-# go to terminator -> Prefereces -> Profiles -> Scrolling, check 'Infinite Scrollback'
 
 # snap installs need to be entered one by one for some reason
 sudo snap install chromium
@@ -17,7 +13,13 @@ sudo snap install sublime-text --classic
 sudo snap install gnome-terminator --beta
 sudo snap install standard-notes
 sudo snap connect standard-notes:password-manager-service
- 
+
+
+# vscode user settings
+cd /tmp/
+curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_settings.json > settings.json && mv settings.json ~/.config/Code/User/
+curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_keybindings.json > keybindings.json && mv keybindings.json ~/.config/Code/User/
+
 
 # download chrome:
 https://www.google.com/chrome/  
@@ -44,24 +46,29 @@ git clone git@github.com:jstmn/cppflow.git
 wget https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg -O ~/Pictures/black.jpg
 gsettings set org.gnome.desktop.background picture-uri file:///~/Pictures/black.jpg
 
-# Set a PS1
-# https://bashrcgenerator.com/
 
+# System settings
+Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as Ctrl
+Settings -> Power -> Screen Blank -> 15 minutes
+Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive 
+Terminator -> Prefereces -> Profiles -> Scrolling, check 'Infinite Scrollback'
 
-# Update vscode shortcuts
-# https://github.com/jstmn/r_scripts/blob/master/vscode_keybindings.json
-# https://github.com/jstmn/r_scripts/blob/master/vscode_settings.json
+# Create a ps1
+https://bash-prompt-generator.org/
+echo "PS1='[ \u ]'" >> ~/.bashrc   # replace "PS1=''" with copied value from website
 
-# Caps Lock -> control
-Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Caps lock behaviour
-
+# update .bashrc, .tmux.conf
+echo "alias pbcopy='xclip -selection clipboard'" >> ~/.bashrc
+echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
+echo "alias gb='git branch'" >> ~/.bashrc
+echo "alias gs='git status'" >> ~/.bashrc
+echo "set -g mouse on" >> ~/.tmux.conf
 
 
 # CUDA INSTALL
 ubuntu-drivers devices
 # nvidia-driver-515 is probably recommended
 # sudo ubuntu-drivers install nvidia-driver-515 < not working
-
 sudo apt install nvidia-driver-515
 #
 sudo reboot
