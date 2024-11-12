@@ -36,8 +36,9 @@ Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive
 https://bash-prompt-generator.org/
 echo "PS1='[ \u ]'" >> ~/.bashrc   # replace "PS1=''" with copied value from website
 
-# update .bashrc
+# update .bashrc, .tmux.conf
 echo "alias pbcopy='xclip -selection clipboard'" >> ~/.bashrc
 echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
 echo "alias gb='git branch'" >> ~/.bashrc
 echo "alias gs='git status'" >> ~/.bashrc
+echo "set -g mouse on" >> ~/.tmux.conf
