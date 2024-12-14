@@ -15,6 +15,11 @@ https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabf
 https://chromewebstore.google.com/detail/okta-browser-plugin/glnpjglilkicbckjpbgcfkogebgllemb
 
 
+# Install cursor
+# 1. download .AppImage from https://www.cursor.com/
+# 2. Create application from .AppImage: https://forum.cursor.com/t/tutorial-install-cursor-permanently-when-appimage-install-didnt-work-on-linux/7712
+
+
 # add vscode
 https://code.visualstudio.com/download # download + install
 cd /tmp/
