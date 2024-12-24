@@ -12,6 +12,11 @@
     "[python]": {
         "editor.rulers": [120]
     },
+    "[latex]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wrappingIndent": "same",
+        "editor.wordWrapColumn": 80
+    },
     "editor.renderWhitespace": "trailing",
     "python.languageServer": "Pylance",
     "editor.fastScrollSensitivity": 4,
