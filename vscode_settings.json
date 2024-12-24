@@ -43,4 +43,5 @@
         "${workspaceFolder}/**"
     ],
     "explorer.confirmDelete": false,
+    "latex-workshop.latex.autoBuild.run": "never",
 }
