@@ -31,7 +31,7 @@ https://www.google.com/chrome/
 https://chromewebstore.google.com/detail/web-search-navigator/cohamjploocgoejdfanacfgkhjkhdkek  # web-search-navigator
 https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi           # fast scroll
 https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom   # ad block
-
+https://chromewebstore.google.com/detail/key-jump-keyboard-navigat/afdjhbmagopjlalgcjfclkgobaafamck
 
 # setup github key
 ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
