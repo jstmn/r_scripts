@@ -19,6 +19,7 @@ https://chromewebstore.google.com/detail/key-jump-keyboard-navigat/afdjhbmagopjl
 # 1. download .AppImage from https://www.cursor.com/
 # 2. Create application from .AppImage: https://forum.cursor.com/t/tutorial-install-cursor-permanently-when-appimage-install-didnt-work-on-linux/7712
 curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_keybindings.json > keybindings.json && mv keybindings.json ~/.config/Cursor/User/
+curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_settings.json > settings.json && mv settings.json ~/.config/Cursor/User/
 
 # add vscode
 https://code.visualstudio.com/download # download + install
