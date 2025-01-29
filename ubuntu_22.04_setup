@@ -35,6 +35,8 @@ wget https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as Ctrl
 Settings -> Power -> Screen Blank -> 15 minutes
 Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive 
+Settings -> Multitasking -> Hot Corner = true
+Settings -> Multitasking -> Application Switching -> "Include applications from the current workspace only"
 
 
 # Create a ps1
