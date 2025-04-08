@@ -9,11 +9,9 @@ sudo snap install tmux --classic
 
 # add chrome
 https://www.google.com/chrome/ # go to and download+install chrome
-https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom
-https://chromewebstore.google.com/detail/web-search-navigator/cohamjploocgoejdfanacfgkhjkhdkek
-https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi
-https://chromewebstore.google.com/detail/okta-browser-plugin/glnpjglilkicbckjpbgcfkogebgllemb
-https://chromewebstore.google.com/detail/key-jump-keyboard-navigat/afdjhbmagopjlalgcjfclkgobaafamck
+https://chromewebstore.google.com/detail/keyboard-navigator-for-go/ndlmonkfnjfeglacjljmmnjbklkmdjpm  # web-search-navigator
+https://chromewebstore.google.com/detail/fast-scroll/ecnjcglleblahonnenpaiofkabfakgdi           # fast scroll
+https://chromewebstore.google.com/detail/adblock-%E2%80%94-block-ads-acros/gighmmpiobklfepjocnamgkkbiglidom   # ad block
 
 # Install cursor
 # 1. download .AppImage from https://www.cursor.com/
