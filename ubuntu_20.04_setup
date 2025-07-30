@@ -1,5 +1,5 @@
 sudo apt update && sudo apt -y upgrade
-sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev
+sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev caffeine
 
 python3.8 -m pip install --upgrade pip
 git config --global user.email "jsmorgan6@gmail.com"
