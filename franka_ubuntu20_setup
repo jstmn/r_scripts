@@ -1,0 +1,96 @@
+=============== librealsense 
+
+sudo apt-get install libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev
+sudo apt-get install git wget cmake build-essential
+sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at
+
+# download the .tar.gz from https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md
+mv Downloads/librealsense-2.50.0.tar.gz Libraries/
+cd Libraries/
+tar xf librealsense-2.50.0.tar.gz
+cd librealsense-2.50.0
+./scripts/setup_udev_rules.sh
+# skipping the kernel patching stuff
+
+
+# Install directions from https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md
+mkdir build && cd build
+cmake ../ -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=Release
+sudo make uninstall
+make clean
+make -j 4   # make sure to do a low number. Getting a compiler error otherwise
+sudo make install
+# check:
+realsense-viewer
+
+
+
+=============== RealSense Ros
+
+ROS Wrapper for Intel® RealSense™ Devices (build 2.3.2)
+- https://github.com/IntelRealSense/realsense-ros/releases/tag/2.3.2 / https://github.com/IntelRealSense/realsense-ros/archive/refs/tags/2.3.2.tar.gz
+- latest that supports noetic
+- Supported realsense SDK: LibRealSense v2.50.0 (https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0)
+
+sudo apt install ros-noetic-ddynamic-reconfigure
+
+# Running:
+roslaunch realsense2_camera demo_pointcloud.launch json_file_path:=/home/jstm/Projects/mpcm2/realsense_config.json
+
+
+
+
+=============== Ros noetic / Franka
+# noetic install: https://wiki.ros.org/noetic/Installation/Ubuntu
+# ros cheat sheet: https://mirror.umd.edu/roswiki/attachments/de/ROScheatsheet.pdf
+# catkin cheat sheet: https://catkin-tools.readthedocs.io/en/latest/cheat_sheet.html
+
+sudo apt install ros-noetic-franka-ros
+
+cd /home/jstm/ros/franka_ws
+source /opt/ros/noetic/setup.bash; source /home/jstm/ros/franka_ws/devel/setup.bash
+catkin build
+
+source /home/jstm/Projects/mpcm2/deoxys_venv/bin/activate
+PYTHONPATH=$PYTHONPATH:/home/jstm/Libraries/deoxys_control/deoxys
+#rosrun franka_extrinsics panda_joint_state_publisher.py interface_cfg_filepath:=/home/jstm/Projects/mpcm2/configs/charmander.yml
+rosrun franka_extrinsics panda_joint_state_publisher /home/jstm/Projects/mpcm2/configs/charmander.yml
+
+lsof -i :5555 # to get PID of process using port 5555 (the port used by deoxys)
+
+
+# Terminal 1
+source /opt/ros/noetic/setup.bash; source /home/jstm/ros/franka_ws/devel/setup.bash; source /home/jstm/Projects/mpcm2/deoxys_venv/bin/activate; cd /home/jstm/ros/franka_ws
+python /home/jstm/ros/franka_ws/src/franka_extrinsics/scripts/panda_joint_state_publisher.py deoxys_interface_cfg_filepath:=/home/jstm/Projects/mpcm2/configs/charmander.yml
+
+# Temp
+source /opt/ros/noetic/setup.bash; source /home/jstm/ros/franka_ws/devel/setup.bash; source /home/jstm/Projects/mpcm2/deoxys_venv/bin/activate; cd /home/jstm/ros/franka_ws
+python /home/jstm/ros/franka_ws/src/franka_extrinsics/scripts/tf_publisher.py
+
+
+# Terminal 2
+roslaunch franka_extrinsics main.launch \
+	json_file_path:=/home/jstm/Projects/mpcm2/realsense_config.json \
+	deoxys_interface_cfg_filepath:=/home/jstm/Projects/mpcm2/configs/charmander.yml
+
+
+
+
+
+
+
+=============== Deoxys
+
+# follow tutorial from here: https://zhuyifengzju.github.io/deoxys_docs/html/installation/codebase_installation.html
+
+# you'll need to do:
+
+pip install matplotlib tqdm
+pip install "protobuf<3.21"
+pip install -e .
+
+# test
+cd /home/jstm/Libraries/deoxys_control/
+mv deoxys/config/charmander.yml deoxys/config/charmander.yml.backup
+python deoxys/examples/cartesian_velocity_control.py --interface-cfg charmander.yml
+
