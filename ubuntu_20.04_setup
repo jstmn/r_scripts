@@ -4,6 +4,16 @@ sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-de
 python3.8 -m pip install --upgrade pip
 git config --global user.email "jsmorgan6@gmail.com"
 
+# Install python3.10
+# download source from https://www.python.org/downloads/release/python-3100/
+cd ~/Downloads/Python-3.10.0
+./configure --enable-optimizations
+make -j 5
+sudo make altinstall
+python3.10
+
+
+
 # snap installs need to be entered one by one for some reason
 sudo snap install chromium
 sudo snap install slack
