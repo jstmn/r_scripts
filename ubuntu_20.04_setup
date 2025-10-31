@@ -31,9 +31,10 @@ curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_
 curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_keybindings.json > keybindings.json && mv keybindings.json ~/.config/Code/User/
 
 # Install cursor
-# 1. download .AppImage from https://www.cursor.com/
-# 2. Create application from .AppImage: https://forum.cursor.com/t/tutorial-install-cursor-permanently-when-appimage-install-didnt-work-on-linux/7712
+# Download .deb from https://cursor.com/download
+mkdir -p ~/.config/Cursor/User/
 curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_keybindings.json > keybindings.json && mv keybindings.json ~/.config/Cursor/User/
+curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_settings.json > settings.json && mv settings.json ~/.config/Cursor/User/
 
 
 # download chrome:
