@@ -1,14 +1,27 @@
 {
     "workbench.tree.indent": 21,
-    "editor.fontSize": 13,
+    "editor.fontSize": 12,
     "explorer.confirmDragAndDrop": false,
 
     "workbench.colorCustomizations": {
         // "editor.selectionBackground": "#ff8c8c", // red color hexadecimal code
         "editor.selectionHighlightBorder": "#fa0303",
         "editor.findMatchBackground": "#ffffffa8", //Current SEARCH MATCH
-        "editor.findMatchHighlightBackground": "#ff0000a1" //Other SEARCH MATCHES
-    },
+        "editor.findMatchHighlightBackground": "#ff0000a1", //Other SEARCH MATCHES
+
+        // Terminal color
+        "terminal.integrated.cursorStyle": "line",
+        "terminal.background": "#000000",        // your desired color
+        "terminal.foreground": "#ffffff",        // optional: text color
+        // "terminalCursor.background": "#FFCC00",  // optional: cursor background
+        "terminalCursor.foreground": "#dd00008f"   // optional: cursor color
+        },
+
+    "editor.cursorStyle": "line",        // 'block', 'line', 'underline'
+    "editor.cursorBlinking": "smooth",    // 'blink', 'smooth', 'phase', 'expand', 'solid'
+    "editor.cursorWidth": 2,             // only applies to line cursor
+
+
     "[python]": {
         "editor.rulers": [120]
     },
@@ -18,7 +31,7 @@
         "editor.wordWrapColumn": 80
     },
     "editor.renderWhitespace": "trailing",
-    "python.languageServer": "Pylance",
+    "python.languageServer": "None",
     "editor.fastScrollSensitivity": 4,
     "workbench.startupEditor": "newUntitledFile",
     "liveshare.authenticationProvider": "GitHub",
@@ -26,14 +39,16 @@
         "*": "default",
         "*.ipynb": "jupyter-notebook",
         "*.png": "imagePreview.previewEditor",
-        "*.jpg": "imagePreview.previewEditor"
+        "*.jpg": "imagePreview.previewEditor",
+        "*.mp4": "vscode.videoPreview",
+        "*.pdf": "pdf.preview",
+        "*.gif": "imagePreview.previewEditor"
     },
     "jupyter.alwaysTrustNotebooks": true,
-    "window.zoomLevel": 0.5,
+    "window.zoomLevel": 0.75,
 
     "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 2, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4, NamespaceIndentation: All, FixNamespaceComments: false }",
     "C_Cpp.clang_format_fallbackStyle": "",
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
     "github.copilot.enable": {
         "*": true,
@@ -49,4 +64,41 @@
     ],
     "explorer.confirmDelete": false,
     "latex-workshop.latex.autoBuild.run": "never",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "cursor.general.globalCursorIgnoreList": [
+        "**/.env",
+        "**/.env.*",
+        "**/credentials.json",
+        "**/credentials.*.json",
+        "**/secret.json",
+        "**/secrets.json",
+        "**/*.key",
+        "**/*.pem",
+        "**/*.pfx",
+        "**/*.p12",
+        "**/*.crt",
+        "**/*.cer",
+        "**/id_rsa",
+        "**/id_dsa",
+        "**/.ssh/id_*",
+        ".ruff_cache/",
+        "**/venv/",
+        "**/.venv/",
+        "logs/"
+    ],
+    "files.watcherExclude": {
+        "**/logs/**": true
+    },
+    "search.exclude": {
+        "logs/": true
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "remote.SSH.remotePlatform": {
+        "abrar@172.16.0.1": "linux",
+        "jmorgan2@dtai-login.delta.ncsa.illinois.edu": "linux",
+        "ssh jeremysmorgan@brain.usc.edu": "linux"
+    },
+    "workbench.colorTheme": "Dark Horizon",
+    "cursor.composer.textSizeScale": 1.15,
+    "terminal.integrated.scrollback": 5000,
 }
