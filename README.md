@@ -42,7 +42,7 @@ nvcc --version
 ```
 
 ## Ubuntu 22 Specific Setup
-```
+```bash
 # apts
 sudo apt update && sudo apt upgrade
 sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel caffeine
