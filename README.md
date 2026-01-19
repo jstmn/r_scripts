@@ -86,6 +86,7 @@ echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
 echo "alias gb='git branch'" >> ~/.bashrc
 echo "alias gs='git status'" >> ~/.bashrc
 echo "set -g mouse on" >> ~/.tmux.conf
+echo "set -g history-limit 50000" >> ~/.tmux.conf
 echo "alias gpoh='git push origin HEAD'" >> ~/.bashrc
 echo "alias gpcb='git push origin $(git branch --show-current)'" >> ~/.bashrc
 
