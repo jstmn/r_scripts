@@ -87,8 +87,9 @@ echo "alias gb='git branch'" >> ~/.bashrc
 echo "alias gs='git status'" >> ~/.bashrc
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 50000" >> ~/.tmux.conf
-echo "alias gpoh='git push origin HEAD'" >> ~/.bashrc
-echo "alias gpcb='git push origin $(git branch --show-current)'" >> ~/.bashrc
+echo "alias gpushhead='git push origin HEAD'" >> ~/.bashrc
+echo "alias gpullcurrent='git pull origin $(git branch --show-current)'" >> ~/.bashrc
+
 
 # setup github key
 ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
