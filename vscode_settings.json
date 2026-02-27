@@ -24,6 +24,7 @@
     "editor.renderWhitespace": "trailing",
     "editor.fontSize": 12,
     "editor.fastScrollSensitivity": 4,
+    "editor.inlayHints.enabled": "off",
     "workbench.tree.indent": 21,
     "explorer.confirmDragAndDrop": false,
     "cursor.composer.textSizeScale": 1.15,
