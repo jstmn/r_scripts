@@ -67,8 +67,10 @@ sudo apt update && sudo apt upgrade
 sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake
 
 # snaps
-sudo snap install standard-notes slack
+sudo snap install standard-notes
 sudo snap install tmux --classic
+
+# Download the slack .deb from https://slack.com/downloads/instructions/linux?ddl=1&build=deb (the snap doesn't work)
 
 # System settings
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as additional Ctrl
