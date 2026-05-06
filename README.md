@@ -114,6 +114,8 @@ echo "set -g history-limit 50000" >> ~/.tmux.conf
 echo "alias gpushhead='git push origin HEAD'" >> ~/.bashrc
 echo "alias gpullcurrent='git pull origin $(git branch --show-current)'" >> ~/.bashrc
 
+# Create a new PS1 from https://bash-prompt-generator.org/
+#   note: use `${PS1_CMD1:+ ${PS1_CMD1}}` to only have 1 space if there is no git branch in the current directory
 
 # setup github key
 ssh-keygen -t ed25519 -C "jsmorgan6@gmail.com"
