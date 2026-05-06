@@ -101,6 +101,10 @@ cd /tmp/
 curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_settings.json > settings.json && mv settings.json ~/.config/Code/User/
 curl https://raw.githubusercontent.com/jstmn/r_scripts/refs/heads/master/vscode_keybindings.json > keybindings.json && mv keybindings.json ~/.config/Code/User/
 
+# Standard notes thing
+snap connect standard-notes:password-manager-service
+
+# Setup shell environment
 echo "alias pbcopy='xclip -selection clipboard'" >> ~/.bashrc
 echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
 echo "alias gb='git branch'" >> ~/.bashrc
