@@ -45,7 +45,7 @@ nvcc --version
 ```bash
 # apts
 sudo apt update && sudo apt upgrade
-sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel caffeine
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel
 
 # snaps
 sudo snap install standard-notes slack
@@ -53,6 +53,26 @@ sudo snap install tmux --classic
 
 # System settings
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as Ctrl
+Settings -> Power -> Screen Blank -> 15 minutes
+Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive 
+Settings -> Multitasking -> Hot Corner = true
+Settings -> Multitasking -> Application Switching -> "Include applications from the current workspace only"
+```
+
+
+## Ubuntu 24 Specific Setup
+```bash
+# apts
+sudo apt update && sudo apt upgrade
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake
+
+# snaps
+sudo snap install standard-notes slack
+sudo snap install tmux --classic
+
+# System settings
+Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as additional Ctrl
+Tweaks -> Windows -> Window Focus -> Focus on Hover
 Settings -> Power -> Screen Blank -> 15 minutes
 Settings -> Accessibility -> Repeat Keys -> Delay/Speed more aggressive 
 Settings -> Multitasking -> Hot Corner = true
