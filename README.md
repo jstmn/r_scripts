@@ -4,7 +4,7 @@
 
 ``` bash
 sudo apt update && sudo apt -y upgrade
-sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev caffeine
+sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev caffeine openssh-server
 
 python3.8 -m pip install --upgrade pip
 git config --global user.email "jsmorgan6@gmail.com"
@@ -45,7 +45,7 @@ nvcc --version
 ```bash
 # apts
 sudo apt update && sudo apt upgrade
-sudo apt install -y gnome-shell-extension-manager gnome-tweaks git vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel openssh-server
 
 # snaps
 sudo snap install standard-notes slack
@@ -64,7 +64,7 @@ Settings -> Multitasking -> Application Switching -> "Include applications from 
 ```bash
 # apts
 sudo apt update && sudo apt upgrade
-sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake openssh-server
 
 # snaps
 sudo snap install standard-notes
