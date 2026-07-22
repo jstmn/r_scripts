@@ -115,7 +115,8 @@ echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 50000" >> ~/.tmux.conf
 echo "alias gpushhead='git push origin HEAD'" >> ~/.bashrc
 echo "alias gpullcurrent='git pull origin $(git branch --show-current)'" >> ~/.bashrc
-cat >> ~/.bashrc <<'EOF'
+
+printf '\n' >> ~/.bashrc && cat >> ~/.bashrc <<'EOF'
 get_git_branch() {
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   if [ -n "$branch" ] && [ "$branch" != "HEAD" ]; then
