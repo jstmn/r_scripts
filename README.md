@@ -113,6 +113,10 @@ echo "alias gb='git branch'" >> ~/.bashrc
 echo "alias gs='git status'" >> ~/.bashrc
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 50000" >> ~/.tmux.conf
+echo "set -g history-limit 50000" >> ~/.tmux.conf
+echo "set -g default-terminal 'tmux-256color'" >> ~/.tmux.conf
+echo "set -ag terminal-overrides ',xterm-256color:RGB'" >> ~/.tmux.conf
+
 echo "alias gpushhead='git push origin HEAD'" >> ~/.bashrc
 echo "alias gpullcurrent='git pull origin $(git branch --show-current)'" >> ~/.bashrc
 
