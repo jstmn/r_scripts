@@ -123,7 +123,7 @@ printf '\n' >> ~/.bashrc && cat >> ~/.bashrc <<'EOF'
 get_git_branch() {
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   if [ -n "$branch" ] && [ "$branch" != "HEAD" ]; then
-    echo "($branch) "
+    echo -e "{$branch} "
   fi
 }
 PS1='$(get_git_branch)'"$PS1"
@@ -131,6 +131,13 @@ EOF
 
 # Create a new PS1 from https://bash-prompt-generator.org/
 #   note: use `${PS1_CMD1:+ ${PS1_CMD1}}` to only have 1 space if there is no git branch in the current directory
+
+# Conda
+cd
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/miniconda3"
+rm Miniconda3-latest-Linux-x86_64.sh
+# source ~/miniconda3/etc/profile.d/conda.sh
 
 # Git / github
 git config --global user.email "jsmorgan6@gmail.com"
