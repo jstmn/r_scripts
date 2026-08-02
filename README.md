@@ -136,6 +136,7 @@ echo "export WANDB_DIR=/PATH/TO/CACHE" >> ~/.bashrc
 echo "export WANDB_ARTIFACT_DIR=/PATH/TO/CACHE" >> ~/.bashrc
 echo "export HF_HOME=/PATH/TO/CACHE" >> ~/.bashrc
 echo "export UV_CACHE_DIR=/PATH/TO/CACHE" >> ~/.bashrc
+echo "export CONDA_PKGS_DIRS=/PATH/TO" >> ~/.bashrc
 
 # Create a new PS1 from https://bash-prompt-generator.org/
 #   note: use `${PS1_CMD1:+ ${PS1_CMD1}}` to only have 1 space if there is no git branch in the current directory
