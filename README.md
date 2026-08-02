@@ -147,7 +147,7 @@ cd
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -b -p "$HOME/miniconda3"
 rm Miniconda3-latest-Linux-x86_64.sh
-# source ~/miniconda3/etc/profile.d/conda.sh
+# echo "source ~/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 
 # Git / github
 git config --global user.email "jsmorgan6@gmail.com"
