@@ -121,13 +121,67 @@ echo "set -ag terminal-overrides ',xterm-256color:RGB'" >> ~/.tmux.conf
 
 printf '\n' >> ~/.bashrc && cat >> ~/.bashrc <<'EOF'
 get_git_branch() {
-  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  if [ -n "$branch" ] && [ "$branch" != "HEAD" ]; then
-    echo -e "{$branch} "
+  local branch upstream ahead behind sync_msg
+  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
+  [ -n "$branch" ] && [ "$branch" != "HEAD" ] || return
+
+  # Compare against the configured upstream (usually origin/<branch>).
+  # Uses local remote-tracking refs only — no network fetch.
+  upstream=$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null)
+  if [ -n "$upstream" ]; then
+    ahead=$(git rev-list --count '@{upstream}..HEAD' 2>/dev/null)
+    behind=$(git rev-list --count 'HEAD..@{upstream}' 2>/dev/null)
+    if [ "${behind:-0}" -gt 0 ] && [ "${ahead:-0}" -gt 0 ]; then
+      sync_msg="behind by ${behind}, ahead by ${ahead}"
+    elif [ "${behind:-0}" -gt 0 ]; then
+      sync_msg="behind by ${behind}"
+    elif [ "${ahead:-0}" -gt 0 ]; then
+      sync_msg="ahead by ${ahead}"
+    else
+      sync_msg="up-to-date"
+    fi
+  else
+    sync_msg="no upstream"
   fi
+  printf '{%s:%s} ' "$branch" "$sync_msg"
 }
 PS1='$(get_git_branch)'"$PS1"
 EOF
+
+
+
+printf '\n' >> ~/.zchrc && cat >> ~/.zchrc <<'EOF'
+get_git_branch() {
+  local branch upstream ahead behind sync_msg
+  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
+  [[ -n $branch && $branch != HEAD ]] || return
+
+  # Compare against the configured upstream (usually origin/<branch>).
+  # Uses local remote-tracking refs only — no network fetch.
+  upstream=$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null)
+  if [[ -n $upstream ]]; then
+    ahead=$(git rev-list --count "@{upstream}..HEAD" 2>/dev/null)
+    behind=$(git rev-list --count "HEAD..@{upstream}" 2>/dev/null)
+    if (( behind > 0 && ahead > 0 )); then
+      sync_msg="behind by ${behind}, ahead by ${ahead}"
+    elif (( behind > 0 )); then
+      sync_msg="behind by ${behind}"
+    elif (( ahead > 0 )); then
+      sync_msg="ahead by ${ahead}"
+    else
+      sync_msg="up-to-date"
+    fi
+  else
+    sync_msg="no upstream"
+  fi
+
+  print -r -- "%F{white}{${branch}:${sync_msg}}%f "
+}
+PS1='$(get_git_branch)'"$PS1"
+EOF
+
+
+
 
 # Optional, set local data directories
 echo "export WANDB_CACHE_DIR=/PATH/TO/CACHE" >> ~/.bashrc
