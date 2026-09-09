@@ -1,19 +1,33 @@
 # Code snippets
 ```python
-import matplotlib
-import matplotlib.font_manager as fm
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+def configure_matplotlib() -> None:
+    """Set the Agg backend, IBM Plex Mono, and major+minor ticks/grid as the global matplotlib style."""
+    import matplotlib
+    import matplotlib.font_manager as fm
 
-FONT_FAMILY = "IBM Plex Mono"
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
 
-if FONT_FAMILY not in {f.name for f in fm.fontManager.ttflist}:
-    raise RuntimeError(
-        f"Required font '{FONT_FAMILY}' is not installed. "
-        "Install it system-wide (e.g. `sudo apt install fonts-ibm-plex`), then re-run."
-    )
+    if FONT_FAMILY not in {f.name for f in fm.fontManager.ttflist}:
+        raise RuntimeError(
+            f"Required font '{FONT_FAMILY}' is not installed. "
+            "Install it system-wide (e.g. `sudo apt install fonts-ibm-plex`), then re-run."
+        )
 
-plt.rcParams["font.family"] = FONT_FAMILY
+    plt.rcParams["font.family"] = FONT_FAMILY
+    plt.rcParams["xtick.minor.visible"] = True
+    plt.rcParams["ytick.minor.visible"] = True
+    plt.rcParams["axes.grid"] = True
+    plt.rcParams["axes.grid.which"] = "both"
+    plt.rcParams["axes.axisbelow"] = True
+
+
+def style_axes_grid(ax) -> None:
+    """Major grid solid; minor grid dashed and lighter. Both drawn under patches."""
+    ax.set_axisbelow(True)
+    ax.grid(True, which="major", linestyle="-", alpha=0.5)
+    ax.grid(True, which="minor", linestyle="--", alpha=0.25)
+    ax.tick_params(axis="both", which="minor", colors=(0.0, 0.0, 0.0, 0.35))
 ```
 
 # Assorted Scripts and Configs
