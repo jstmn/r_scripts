@@ -143,43 +143,12 @@ echo "alias pbpaste='xclip -selection clipboard -o'" >> ~/.bashrc
 echo "alias gb='git branch'" >> ~/.bashrc
 echo "alias gs='git status'" >> ~/.bashrc
 echo "alias gpushhead='git push origin HEAD'" >> ~/.bashrc
-echo 'alias gpullcurrent="git pull origin $(git branch --show-current)"' >> ~/.bashrc
+# echo 'alias gpullcurrent="git pull origin $(git branch --show-current)"' >> ~/.bashrc
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 50000" >> ~/.tmux.conf
 echo "set -g history-limit 50000" >> ~/.tmux.conf
 echo "set -g default-terminal 'tmux-256color'" >> ~/.tmux.conf
 echo "set -ag terminal-overrides ',xterm-256color:RGB'" >> ~/.tmux.conf
-
-printf '\n' >> ~/.bashrc && cat >> ~/.bashrc <<'EOF'
-get_git_branch() {
-  local branch upstream ahead behind sync_msg
-  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
-  [ -n "$branch" ] && [ "$branch" != "HEAD" ] || return
-
-  # Compare against the configured upstream (usually origin/<branch>).
-  # Uses local remote-tracking refs only — no network fetch.
-  upstream=$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null)
-  if [ -n "$upstream" ]; then
-    ahead=$(git rev-list --count '@{upstream}..HEAD' 2>/dev/null)
-    behind=$(git rev-list --count 'HEAD..@{upstream}' 2>/dev/null)
-    if [ "${behind:-0}" -gt 0 ] && [ "${ahead:-0}" -gt 0 ]; then
-      sync_msg="behind by ${behind}, ahead by ${ahead}"
-    elif [ "${behind:-0}" -gt 0 ]; then
-      sync_msg="behind by ${behind}"
-    elif [ "${ahead:-0}" -gt 0 ]; then
-      sync_msg="ahead by ${ahead}"
-    else
-      sync_msg="up-to-date"
-    fi
-  else
-    sync_msg="no upstream"
-  fi
-  printf '{%s:%s} ' "$branch" "$sync_msg"
-}
-PS1='$(get_git_branch)'"$PS1"
-EOF
-
-
 
 printf '\n' >> ~/.zchrc && cat >> ~/.zchrc <<'EOF'
 get_git_branch() {
@@ -209,6 +178,7 @@ get_git_branch() {
   print -r -- "%F{white}{${branch}:${sync_msg}}%f "
 }
 PS1='$(get_git_branch)'"$PS1"
+alias gpullcurrent='git pull origin "$(git branch --show-current)"'
 EOF
 
 
