@@ -36,7 +36,7 @@ def style_axes_grid(ax) -> None:
 
 ``` bash
 sudo apt update && sudo apt -y upgrade
-sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev caffeine openssh-server
+sudo apt install -y git gnome-tweaks vim xclip curl tree flameshot cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3.8-venv python3-wheel python3-pip python3.8-dev caffeine openssh-server tmux
 
 python3.8 -m pip install --upgrade pip
 git config --global user.email "jsmorgan6@gmail.com"
@@ -77,11 +77,10 @@ nvcc --version
 ```bash
 # apts
 sudo apt update && sudo apt upgrade
-sudo apt install -y gnome-shell-extension-manager gnome-tweaks git vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel openssh-server
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git vim xclip curl tree cmake xorg-dev libglu1-mesa-dev git-lfs ffmpeg kazam gpustat meshlab liburdfdom-tools terminator python3-wheel openssh-server tmux
 
 # snaps
 sudo snap install standard-notes slack
-sudo snap install tmux --classic
 
 # System settings
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as Ctrl
@@ -96,12 +95,12 @@ Settings -> Multitasking -> Application Switching -> "Include applications from 
 ```bash
 # apts
 sudo apt update && sudo apt upgrade
-sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake openssh-server
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks git gnome-tweaks vim xclip curl tree cmake openssh-server tmux
 
 # snaps
 sudo snap install standard-notes
 sudo snap install slack
-sudo snap install tmux --classic
+
 
 # System settings
 Tweaks -> Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Caps Lock as additional Ctrl
@@ -214,8 +213,6 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 # then go to https://github.com/settings/ssh/new and add key
 
-# Enable lingering so that tmux isn't shutdown when the PC sleeps
-sudo loginctl enable-linger "$USER"
 
 mkdir ~/Libraries
 mkdir ~/Projects
