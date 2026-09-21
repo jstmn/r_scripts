@@ -214,6 +214,9 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 # then go to https://github.com/settings/ssh/new and add key
 
+# Enable lingering so that tmux isn't shutdown when the PC sleeps
+sudo loginctl enable-linger "$USER"
+
 mkdir ~/Libraries
 mkdir ~/Projects
 ```
